@@ -2,11 +2,20 @@
 
 # Machine name.
 function box_name {
-    [ -f ~/.box-name ] && cat ~/.box-name || echo $HOST
+  [ -f ~/.box-name ] && cat ~/.box-name || echo $HOST
 }
 
 # Directory info.
-local current_dir='${PWD/*\//}'
+local current_dir='$(get_current_dir)'
+function get_current_dir {
+  if [[ ${PWD} == ${HOME} ]]; then
+    echo "~"
+  elif [[ ${#PWD} < 30 ]]; then
+    echo "${PWD/#$HOME/~}"
+  else echo "${PWD/*\//}"
+  fi
+}
+
 
 # VCS
 YS_VCS_PROMPT_PREFIX1=" %{$fg[white]%}%{$reset_color%} "
@@ -38,6 +47,8 @@ ys_hg_prompt_info() {
 	fi
 }
 
+
+# Show a green lambda if the last command went fine, otherwise red
 local lamda="%(?,%{$fg_bold[green]%}λ,%{$fg_bold[red]%}λ)"
 if [[ "$USER" == "root" ]]; then
 USERCOLOR="red";
