@@ -1,7 +1,6 @@
 # Honukai theme and colors for Oh My ZSH and iTerm
 
-![](https://raw.githubusercontent.com/giuge/honukai-iterm/master/honukai.png)
-
+![](https://raw.github.com/giuge/honukai-iterm/master/honukai.png)
 [See how it looks with blur and transparency](https://v.usetapes.com/SDGzCBkHh4) (video).
 
 ## Installation
